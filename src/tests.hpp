@@ -21,6 +21,8 @@ class tests {
 	std::chrono::_V2::system_clock::time_point libcend;
 
 	void smallString();
+	void mediumString();
+	void longString();
 
 	void outputResultsofRun();
 };
