@@ -23,6 +23,10 @@ class tests {
 	void smallString();
 	void mediumString();
 	void longString();
+	
+	void shortFind();
+	void mediumFind();
+	void longFind();
 
 	void outputResultsofRun();
 };
