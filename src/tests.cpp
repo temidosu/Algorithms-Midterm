@@ -1,9 +1,7 @@
 #include "tests.hpp"
+#include <math.h>
 
-tests::tests(const char *outputFileName) {
-	outputStream.open(outputFileName);
-	outputStream << "Folly String(seconds)\tlibc String(seconds)"
-				 << "\n";
+tests::tests() {
 
 	smallString();
 	mediumString();
@@ -17,12 +15,24 @@ tests::tests(const char *outputFileName) {
 void tests::smallString() {
 	std::cout << "Small String - ";
 	// Fb string has 3 tiered storage
+	std::vector<folly::fbstring> fbvec;
+	fbvec.reserve(100000);
+
 	fbstart = std::chrono::high_resolution_clock::now();
-	folly::fbstring fbstring = "abdefg";
+	for (int i = 0; i < 100000; ++i) {
+		fbvec.push_back("abdefg");
+	}
+	// folly::fbstring fbstring = "abdefg";
 	fbend = std::chrono::high_resolution_clock::now();
 
+	std::vector<std::string> stdvec;
+	stdvec.reserve(100000);
+
 	libcstart = std::chrono::high_resolution_clock::now();
-	std::string std_string = "abdefg";
+	// std::string std_string = "abdefg";
+	for (int i = 0; i < 100000; ++i) {
+		stdvec.push_back("abdefg");
+	}
 	libcend = std::chrono::high_resolution_clock::now();
 
 	outputResultsofRun();
@@ -65,8 +75,8 @@ void tests::outputResultsofRun() {
 	std::cout << "folly: " << follyDuration.count() << " sec. libc: "
 			  << libcDuration.count() << " sec." << std::endl;
 
-	outputStream << std::fixed << std::setprecision(9);
-	outputStream << follyDuration.count() << "\t\t\t\t" << libcDuration.count() << "\n";
+	// outputStream << std::fixed << std::setprecision(9);
+	// outputStream << follyDuration.count() << "\t\t\t\t" << libcDuration.count() << "\n";
 }
 
 void tests::shortFind() {
@@ -105,6 +115,7 @@ void tests::mediumFind() {
 	stdstring.find('B');
 	stdstring.find('V');
 	stdstring.find('6');
+
 	libcend = std::chrono::high_resolution_clock::now();
 
 	outputResultsofRun();

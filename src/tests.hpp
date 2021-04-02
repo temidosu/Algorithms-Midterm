@@ -1,7 +1,8 @@
 #include <chrono>
-#include <fstream>
+// #include <fstream>
 #include <iomanip> // std::setprecision()
 #include <iostream>
+#include <vector>
 
 #include <folly/FBString.h>
 #include <string>
@@ -10,10 +11,10 @@
 
 class tests {
 	public:
-	tests(const char *outputFileName);
+	tests();
 
 	private:
-	std::ofstream outputStream;
+	// std::ofstream outputStream;
 
 	std::chrono::_V2::system_clock::time_point fbstart;
 	std::chrono::_V2::system_clock::time_point fbend;
@@ -23,10 +24,12 @@ class tests {
 	void smallString();
 	void mediumString();
 	void longString();
-	
+
 	void shortFind();
 	void mediumFind();
 	void longFind();
+
+	void defaultConstructor();
 
 	void outputResultsofRun();
 };
