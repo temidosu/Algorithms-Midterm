@@ -18,8 +18,9 @@ class tests {
 
 	std::chrono::_V2::system_clock::time_point fbstart;
 	std::chrono::_V2::system_clock::time_point fbend;
-	std::chrono::_V2::system_clock::time_point libcstart;
-	std::chrono::_V2::system_clock::time_point libcend;
+
+	std::chrono::_V2::system_clock::time_point libstdstart;
+	std::chrono::_V2::system_clock::time_point libstdend;
 
 	void smallString();
 	void mediumString();
