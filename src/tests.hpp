@@ -22,6 +22,8 @@ class tests {
 	std::chrono::_V2::system_clock::time_point libstdstart;
 	std::chrono::_V2::system_clock::time_point libstdend;
 
+	void defaultConstruction();
+	
 	void smallString();
 	void mediumString();
 	void longString();
@@ -30,7 +32,6 @@ class tests {
 	void mediumFind();
 	void longFind();
 
-	void defaultConstructor();
 
 	void outputResultsofRun();
 };
