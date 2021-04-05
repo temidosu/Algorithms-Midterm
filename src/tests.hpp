@@ -28,7 +28,7 @@ class tests {
 	void mediumString();
 	void longString();
 
-	void shortFind();
+	void smallFind();
 	void mediumFind();
 	void longFind();
 

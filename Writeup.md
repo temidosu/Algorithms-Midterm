@@ -33,9 +33,7 @@ Folly readily converts between ```std::string``` and ```folly::fbstring```.
 
 ## Testing methodology
 All tests were run on an i5 9300H running at 2.4 GHz. Tests were compiled in release mode using Clang 12. libstd++ version was 2.27.
-
-## Results
-The results were almost a wash. On a single string allocation, std::string beat folly::fbstring. However, with a std::vector with 100k elements ```reserve()```'d, folly beat libc string at small string (less than 23 chars).  
+  
 
 ### Default Construction
 An array T[] is required to default construct all members, so by making an array of strings it is possible to benchmark the string's default constructor performance. Folly sees a win of default constructing an array of 100000 elements.
@@ -47,7 +45,7 @@ All 3 tests were done with a ```std::vector``` reserved to size 100000.
 * Folly beat fbstring at all sizes
 * Folly demonstrated the largest win with long string, beating libstd++ by a wide margin (0.38 seconds)!
 
-### Small, medium, and larg find()
+### Small, medium, and large find()
 
 
 ## Conclusion
